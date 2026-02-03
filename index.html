@@ -9,18 +9,32 @@
 </head>
 <body>
   <header class="site-header">
-    <div class="container">
-      <h1>Dev Srivastava</h1>
-      <p class="lead">MSc Computer Science, <strong>University of Warwick</strong></p>
-      <p class="contact">Email: <a href="mailto:devnoida26@gmail.com">devnoida26@gmail.com</a> • GitHub: <a href="https://github.com/DeVs2611" target="_blank" rel="noopener noreferrer">@DeVs2611</a></p>
+    <div class="container hero">
+      <div class="hero-left">
+        <img class="avatar" src="https://github.com/DeVs2611.png" alt="Dev Srivastava" />
+        <div>
+          <h1>Dev Srivastava</h1>
+          <p class="lead">MSc Computer Science — <strong>University of Warwick</strong></p>
+          <p class="contact">Email: <a href="mailto:devnoida26@gmail.com">devnoida26@gmail.com</a> • <a href="https://github.com/DeVs2611" target="_blank" rel="noopener noreferrer">@DeVs2611</a></p>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="controls-top">
+          <input id="search" class="search" type="search" placeholder="Search projects..." aria-label="Search projects" />
+          <label class="theme-toggle"><input id="theme-toggle" type="checkbox" /> <span>Dark mode</span></label>
+        </div>
+        <p class="hero-cta">I build projects, analyze data, and explore systems. Below are my repositories — click "View" for details and README excerpts.</p>
+        <p class="hero-actions"><a class="btn" href="/resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a></p>
+      </div>
     </div>
   </header>
 
   <main class="container">
     <section id="about">
       <h2>About</h2>
-      <p>Hello — I'm <strong>Dev Srivastava</strong>, currently studying MSc Computer Science at the University of Warwick. This site lists my projects and GitHub repositories.</p>
-    </section>
+      <p>Hello — I'm <strong>Dev Srivastava</strong>, currently studying MSc Computer Science at the University of Warwick. This site lists my projects and GitHub repositories and pulls README excerpts for quick previews.</p>
+    </section> 
 
     <section id="projects">
       <div class="section-header">
@@ -31,13 +45,28 @@
         </div>
       </div>
 
-      <div id="projects-list" class="grid"></div>
+      <div id="projects-list" class="grid" aria-live="polite"></div>
+
       <div id="loader" class="loader">Loading public repositories...</div>
-    </section>
+
+      <!-- Modal for repo details -->
+      <div id="repo-modal" class="modal" aria-hidden="true">
+        <div class="modal-content" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+          <button class="modal-close" aria-label="Close">×</button>
+          <h3 id="modal-title"></h3>
+          <p id="modal-desc" class="muted"></p>
+          <div id="modal-meta" class="meta"></div>
+          <pre id="modal-readme" class="readme"></pre>
+          <p class="modal-actions"><a id="modal-github" class="btn" target="_blank" rel="noopener noreferrer">Open on GitHub</a></p>
+        </div>
+      </div>
+
+    </section> 
 
     <section id="contact">
       <h2>Contact</h2>
       <p>Reach out at <a href="mailto:devnoida26@gmail.com">devnoida26@gmail.com</a> or open an issue on any repository.</p>
+      <p class="small muted">Tip: Click a project and press the <kbd>v</kbd> key to quickly open the repo.</p>
     </section>
   </main>
 

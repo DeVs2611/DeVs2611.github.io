@@ -4,10 +4,26 @@ const INCLUDE_FORKS = false; // toggle default
 const MAX_REPOS = 100;
 const GITHUB_TOKEN = ''; // optional: set a token if you want to include private repos (see README)
 
+// Elements
 const projectsList = document.getElementById('projects-list');
 const loader = document.getElementById('loader');
 const toggleForks = document.getElementById('toggle-forks');
 const sortStars = document.getElementById('sort-stars');
+const searchInput = document.getElementById('search');
+const themeToggle = document.getElementById('theme-toggle');
+
+const modal = document.getElementById('repo-modal');
+const modalTitle = document.getElementById('modal-title');
+const modalDesc = document.getElementById('modal-desc');
+const modalMeta = document.getElementById('modal-meta');
+const modalReadme = document.getElementById('modal-readme');
+const modalGithub = document.getElementById('modal-github');
+const modalClose = document.querySelector('.modal-close');
+
+let allRepos = [];
+
+// small helper to avoid HTML injection
+function escapeHtml(str){return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
 
 async function fetchRepos() {
   loader.style.display = 'block';
@@ -24,6 +40,8 @@ async function fetchRepos() {
     // Sort
     if (sortStars.checked) repos.sort((a,b) => b.stargazers_count - a.stargazers_count);
     else repos.sort((a,b) => new Date(b.updated_at) - new Date(a.updated_at));
+
+    allRepos = repos; // store copy for search
 
     if (repos.length === 0) projectsList.innerHTML = '<p class="loader">No public repositories found.</p>';
 
@@ -50,9 +68,6 @@ function renderRepo(repo) {
   `;
   projectsList.appendChild(card);
 }
-
-// small helper to avoid HTML injection
-function escapeHtml(str){return String(str).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));}
 
 // Event bindings
 toggleForks.checked = INCLUDE_FORKS;
