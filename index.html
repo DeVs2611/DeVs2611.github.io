@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dev Srivastava — Portfolio</title>
+  <meta name="description" content="Portfolio of Dev Srivastava — MSc Computer Science, University of Warwick" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Dev Srivastava</h1>
+      <p class="lead">MSc Computer Science, <strong>University of Warwick</strong></p>
+      <p class="contact">Email: <a href="mailto:devnoida26@gmail.com">devnoida26@gmail.com</a> • GitHub: <a href="https://github.com/DeVs2611" target="_blank" rel="noopener noreferrer">@DeVs2611</a></p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="about">
+      <h2>About</h2>
+      <p>Hello — I'm <strong>Dev Srivastava</strong>, currently studying MSc Computer Science at the University of Warwick. This site lists my projects and GitHub repositories.</p>
+    </section>
+
+    <section id="projects">
+      <div class="section-header">
+        <h2>Projects</h2>
+        <div class="controls">
+          <label><input id="toggle-forks" type="checkbox" /> Show forks</label>
+          <label><input id="sort-stars" type="checkbox" checked /> Sort by stars</label>
+        </div>
+      </div>
+
+      <div id="projects-list" class="grid"></div>
+      <div id="loader" class="loader">Loading public repositories...</div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>Reach out at <a href="mailto:devnoida26@gmail.com">devnoida26@gmail.com</a> or open an issue on any repository.</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">Built with ❤️ · <small>Auto-fetches public repos from GitHub</small></div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
